@@ -8,22 +8,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b1424'/><path d='M20 16h24v6H26v8h14v6H26v8h18v6H20z' fill='%2339b5ff'/></svg>" />
+<link rel="icon" href="assets/edge-mark.jpg" />
+<link rel="apple-touch-icon" href="assets/edge-mark.jpg" />
 <style>
 :root{
-  --navy:#0b1424;
-  --navy-2:#13203a;
-  --ink:#0d1526;
-  --slate:#3f4b5c;
+  --navy:#07122b;
+  --navy-2:#1a1340;
+  --ink:#0e1728;
+  --slate:#4a5568;
   --panel:#ffffff;
   --soft:#f4f6fa;
-  --line:#e6eaf0;
-  --accent:#1f6feb;
-  --accent-2:#22a7c4;
-  --accent-soft:rgba(31,111,235,.10);
-  --accent-glow:rgba(31,111,235,.25);
+  --line:#e6eaf1;
+  --accent:#6d28a8;
+  --accent-2:#2b6b9a;
+  --accent-3:#2f9f5f;
+  --accent-soft:rgba(109,40,168,.10);
+  --accent-glow:rgba(109,40,168,.24);
   --gold:#d89b36;
-  --success:#1e7f5a;
+  --success:#2f9f5f;
   --shadow:0 1px 2px rgba(11,20,36,.06),0 18px 40px -20px rgba(11,20,36,.18);
   --shadow-sm:0 1px 2px rgba(11,20,36,.05);
   --font-display:"Fraunces",Georgia,"Times New Roman",serif;
@@ -32,10 +34,11 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --navy:#0a1020;--navy-2:#101933;--ink:#eaf0f8;--slate:#9fb0c8;--panel:#141c30;
-    --soft:#0f1628;--line:#222d45;--accent:#58a6ff;--accent-2:#52c7dc;
-    --accent-soft:rgba(88,166,255,.12);--accent-glow:rgba(88,166,255,.25);
-    --gold:#e6b357;--success:#4cc890;
+    --navy:#050b1c;--navy-2:#150f33;--ink:#eaf0f8;--slate:#9ca8be;--panel:#141731;
+    --soft:#0c0f22;--line:#262347;--accent:#b276ff;--accent-2:#74b4df;
+    --accent-3:#62ce8d;
+    --accent-soft:rgba(178,118,255,.14);--accent-glow:rgba(178,118,255,.26);
+    --gold:#e6b357;--success:#62ce8d;
     --shadow:0 24px 60px -28px rgba(0,0,0,.7);
     color-scheme:dark;
   }
@@ -66,7 +69,8 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 :root[data-theme="dark"] .hdr{background:rgba(10,16,32,.82)}
 .hdr-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;color:var(--ink);font-weight:800;letter-spacing:-.02em}
-.brand-mark{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--accent));display:grid;place-items:center;color:#fff;font-weight:700;font-family:var(--font-display);font-size:1.2rem}
+.brand-mark{width:44px;height:44px;border-radius:12px;overflow:hidden;border:1.5px solid var(--accent-3);background:var(--panel);box-shadow:0 4px 10px -4px var(--accent-glow);display:block}
+.brand-mark img{width:100%;height:100%;object-fit:cover;display:block}
 .brand small{display:block;font-weight:600;font-size:.72rem;color:var(--slate);letter-spacing:.08em;text-transform:uppercase}
 .hdr-actions{display:flex;align-items:center;gap:10px}
 .tel{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:9px;background:var(--accent);color:#fff;font-weight:700;font-size:.95rem;box-shadow:0 8px 20px -10px var(--accent-glow)}
@@ -78,12 +82,12 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 /* Hero */
 .hero{
   position:relative;overflow:hidden;
-  background:linear-gradient(155deg,var(--navy) 0%,var(--navy-2) 52%,#1e3a68 100%);
+  background:linear-gradient(155deg,var(--navy) 0%,var(--navy-2) 45%,var(--accent) 100%);
   color:#f0f4fa;padding:86px 0 96px;
 }
 .hero::before{
   content:"";position:absolute;inset:auto -120px -160px -120px;height:320px;
-  background:radial-gradient(ellipse at center,rgba(34,167,196,.35),transparent 65%);
+  background:radial-gradient(ellipse at center,rgba(109,40,168,.45),transparent 60%),radial-gradient(ellipse at 70% 10%,rgba(47,159,95,.25),transparent 55%);
   pointer-events:none;
 }
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative}
@@ -92,7 +96,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   line-height:1.05;letter-spacing:-.02em;margin:0 0 18px;color:#fff;
   text-wrap:balance;
 }
-.hero h1 em{font-style:italic;color:#7dd3fc;font-weight:400}
+.hero h1 em{font-style:italic;color:#b276ff;font-weight:400}
 .hero p{color:rgba(240,244,250,.78);font-size:1.15rem;max-width:56ch;margin:0 0 28px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
 .btn{
@@ -110,11 +114,11 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   border-radius:20px;padding:26px;backdrop-filter:blur(6px);
   box-shadow:0 30px 60px -30px rgba(0,0,0,.5);
 }
-.hero-card .kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#7dd3fc;font-weight:700;margin-bottom:12px}
+.hero-card .kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#b276ff;font-weight:700;margin-bottom:12px}
 .hero-card ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
 .hero-card li{display:flex;gap:12px;align-items:flex-start;color:#f0f4fa;font-size:.97rem}
 .hero-card li .ic{flex:0 0 22px;width:22px;height:22px;border-radius:7px;background:rgba(125,211,252,.18);display:grid;place-items:center;margin-top:1px}
-.hero-card li .ic svg{width:13px;height:13px;stroke:#7dd3fc}
+.hero-card li .ic svg{width:13px;height:13px;stroke:#b276ff}
 .hero-card .note{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:.86rem;color:rgba(240,244,250,.66)}
 @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero{padding:64px 0 74px}}
 
@@ -175,7 +179,7 @@ h2.section-title{
   padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:var(--panel);
   font-weight:600;font-size:.92rem;color:var(--ink);
 }
-.area-chips span.primary{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.area-chips span.primary{background:rgba(47,159,95,.14);border-color:transparent;color:var(--success)}
 
 /* FAQ */
 .faq{max-width:860px}
@@ -202,7 +206,7 @@ details.faq-item[open] .ans{max-height:420px;opacity:1;margin-top:8px}
 .banner::after{content:"";position:absolute;right:-60px;bottom:-60px;width:180px;height:180px;border-radius:50%;background:rgba(125,211,252,.15)}
 .banner ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
 .banner li{position:relative;padding-left:22px;color:rgba(240,244,250,.85);font-size:.95rem}
-.banner li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:#7dd3fc}
+.banner li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:#b276ff}
 
 /* CTA block */
 .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px}
@@ -240,7 +244,7 @@ footer a:hover{color:#fff}
 <header class="hdr">
   <div class="container hdr-row">
     <a class="brand" href="#">
-      <span class="brand-mark">EC</span>
+      <span class="brand-mark"><img src="assets/edge-mark.jpg" alt="Edge Computing of Colorado Springs logo" /></span>
       <span>
         Edge Computing
         <small>Mobile Repair of Colorado Springs</small>
@@ -259,7 +263,7 @@ footer a:hover{color:#fff}
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow" style="color:#7dd3fc">Now serving 7 cities · By appointment</span>
+      <span class="eyebrow" style="color:#b276ff">Now serving 7 cities · By appointment</span>
       <h1>Computer repair<br />that <em>comes to you.</em></h1>
       <p>Edge Computing is a mobile repair service for phones, tablets, PCs, custom gaming builds and car audio — across Colorado Springs and surrounding communities. You get a quote before any work, and full control before anything starts.</p>
       <div class="hero-actions">
