@@ -83,10 +83,11 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .hero{
   position:relative;overflow:hidden;
   background:url("assets/hero-bg.jpg") center top no-repeat;
-  background-size:100% auto;
+  background-size:contain;
   background-color:var(--navy);
   color:#fff;padding:270px 0 40px;
   min-height:0;
+  aspect-ratio:1600 / 609;
 }
 .hero::before{
   content:"";position:absolute;inset:0;
@@ -103,6 +104,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   line-height:1.05;letter-spacing:-.02em;margin:0 0 18px;color:#fff;
   text-wrap:balance;
 }
+.hero h1 .hl{color:#b276ff;font-weight:800;font-style:normal}
 .hero h1 em{font-style:italic;color:#b276ff;font-weight:400}
 .hero p{color:rgba(240,244,250,.78);font-size:1.15rem;max-width:56ch;margin:0 0 28px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
@@ -279,7 +281,7 @@ footer a:hover{color:#fff}
   <div class="container hero-grid">
     <div>
       <span class="eyebrow" style="color:#b276ff">Now serving 7 cities · By appointment</span>
-      <h1>Computer repair<br />that comes to you.</h1>
+      <h1>Computer repair<br />that <span class="hl">comes to you.</span></h1>
       <p>Edge Computing is a mobile repair service for phones, tablets, PCs, custom gaming builds and car audio — across Colorado Springs and surrounding communities. Before you give your whole paycheck to NerdSquad, call or message us today to find out what Edge can do for You!</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="tel:+17194074918">Schedule mobile service</a>
