@@ -208,6 +208,13 @@ details.faq-item[open] .ans{max-height:420px;opacity:1;margin-top:8px}
 .banner li{position:relative;padding-left:22px;color:rgba(240,244,250,.85);font-size:.95rem}
 .banner li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:#b276ff}
 
+
+/* Owner photos */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.gallery figcaption{font-size:.85rem;color:var(--slate);margin-top:6px}
+@media(max-width:760px){.gallery{grid-template-columns:1fr}}
+
 /* CTA block */
 .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px}
 .contact-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px 28px;box-shadow:var(--shadow)}
@@ -451,6 +458,21 @@ footer a:hover{color:#fff}
         <div class="ans">We meet customers by appointment only. You can choose to have us come to you or you can drop your device off at our convenient Southgate hub.</div>
       </details>
     </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">From the field</span>
+      <h2 class="section-title">Local visuals and brand assets.</h2>
+      <p class="section-lead">Owner-provided graphics that reflect our style and service presence around Southgate Colorado Springs.</p>
+    </div>
+    <figure class="gallery reveal">
+      <div><img src="assets/img_0253.jpg" alt="Edge Computing service graphic" loading="lazy" /></div>
+      <div><img src="assets/img_0343.jpg" alt="Edge Computing brand graphic" loading="lazy" /></div>
+      <div><img src="assets/img_0347.jpg" alt="Edge Computing brand graphic" loading="lazy" /></div>
+    </figure>
   </div>
 </section>
 
