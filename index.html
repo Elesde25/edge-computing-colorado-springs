@@ -289,7 +289,7 @@ footer a:hover{color:#fff}
       <h1>Computer repair<br />that <span class="hl">comes to you.</span></h1>
       <p>Edge Computing is a mobile repair service for phones, tablets, PCs, custom gaming builds and car audio — across Colorado Springs and surrounding communities. Before you give your whole paycheck to NerdSquad, call or message us today to find out what Edge can do for You!</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="tel:+17194074918">Schedule mobile service</a>
+        <button type="button" class="btn btn-ghost" onclick="openScheduleModal()" style="background:rgba(255,255,255,.12);border-color:var(--neon-green);color:#fff;">Schedule mobile service</button>
         <a class="btn btn-ghost" href="https://www.facebook.com/EdgeComputingColorado" target="_blank" rel="noopener">Message on Facebook</a>
       </div>
       <div class="hero-meta">
@@ -553,5 +553,98 @@ const observer = new IntersectionObserver((entries)=>{
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 // header safe-area paint handled by sticky body; ensure padding present
 </script>
+
+
+<!-- Appointment Modal -->
+<div id="schedule-modal-overlay" class="modal-overlay" aria-hidden="true">
+  <div class="modal-backdrop"></div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Schedule a Visit</h3>
+        <button type="button" class="modal-close" onclick="closeScheduleModal()" aria-label="Close">&times;</button>
+      </div>
+      <form id="schedule-form" onsubmit="handleScheduleSubmit(event)">
+        <div class="modal-body">
+          <p class="modal-subtitle">Tell us what you need — we'll get back to you within 30 minutes.</p>
+          
+          <div class="form-group">
+            <label for="sch-name">Name</label>
+            <input type="text" id="sch-name" name="name" required placeholder="Jane Doe">
+          </div>
+          
+          <div class="form-group">
+            <label for="sch-phone">Phone</label>
+            <input type="tel" id="sch-phone" name="phone" required placeholder="(719) 555-0123">
+          </div>
+          
+          <div class="form-group">
+            <label for="sch-email">Email (optional)</label>
+            <input type="email" id="sch-email" name="email" placeholder="jane@example.com">
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="sch-service">What service do you need?</label>
+            <textarea id="sch-service" name="service" rows="4" required placeholder="E.g., iPhone screen replacement, laptop battery swap..."></textarea>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="sch-details">Additional details</label>
+            <textarea id="sch-details" name="details" rows="3" placeholder="Any other info we should know?"></textarea>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeScheduleModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+function openScheduleModal(){ 
+  const modal = document.getElementById('schedule-modal-overlay');
+  modal.classList.add('modal-open');
+  modal.setAttribute('aria-hidden', 'false');
+  setTimeout(()=>document.getElementById('sch-name').focus(), 150);
+}
+
+function closeScheduleModal(){ 
+  const modal = document.getElementById('schedule-modal-overlay');
+  modal.classList.remove('modal-open');
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+function handleScheduleSubmit(e){ 
+  e.preventDefault();
+  // In production, you'd send this to your backend or email service
+  const btn = e.target.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  
+  setTimeout(()=>{ 
+    alert('Thanks! We'll text you back within 30 minutes to confirm your appointment.');
+    closeScheduleModal();
+    e.target.reset();
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }, 800);
+}
+
+// Close on backdrop click
+document.getElementById('schedule-modal-overlay').addEventListener('click', (e)=>{
+  if(e.target.classList.contains('modal-backdrop')) closeScheduleModal();
+});
+
+// Close on Escape key
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape' && document.body.classList.contains('modal-open')) closeScheduleModal();
+});
+</script>
+
 </body>
 </html>
